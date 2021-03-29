@@ -2,7 +2,7 @@
 
 namespace ESGI {
 	Component::Component() {
-		this->Init("Component");
+		this->Init(typeid(Component).name());
 	}
 
 	void Component::Init(string name) {

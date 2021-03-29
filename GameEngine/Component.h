@@ -6,6 +6,8 @@ using namespace std;
 namespace ESGI {
 	class Component {
 		public:
+			Component();
+
 			virtual void Init(string name);
 
 			virtual void Start() {}
