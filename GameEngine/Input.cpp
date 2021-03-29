@@ -22,21 +22,29 @@ namespace ESGI {
 		std::cout << "[Input] deinitialized\n";
 	}
 
-	// ce n'est pas une fonction virtuelle !
-	void Input::Update()
+	void Input::RunUpdate()
 	{
-		QuitButtonPressed = GetQuitButtonState();
+		GetInputs();
 		std::cout << "[Input] update\n";
 	}
 
-	bool Input::GetQuitButtonState()
+	// ce n'est pas une fonction virtuelle !
+	thread Input::Update()
+	{
+		return thread(&Input::RunUpdate, this);
+	}
+
+	void Input::GetInputs()
 	{
 		if (_kbhit())
 		{
 			int ch = _getch();
-			if (ch == 27)			// ESC 
-				return true;
+			if (ch == 27) {
+				QuitButtonPressed = true;
+				return;
+			}
+
+			inputsPressed.push_back(ch);
 		}
-		return false;
 	}
 }

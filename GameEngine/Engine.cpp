@@ -3,8 +3,9 @@
 // par contre lors de la definition de la fonction il faut une implementation complete
 #include "EngineContext.h"
 #include "Timer.h"
+#include "Input.h"
 
-#include <iostream>
+#include <Windows.h>
 
 namespace ESGI {
 
@@ -60,12 +61,38 @@ namespace ESGI {
 		std::cout << "[Engine] deinitialized\n";
 	}
 
-	// ce n'est pas une fonction virtuelle !
-	void Engine::Update(EngineContext& context)
+	void monCul(vector<Component*> componentIn)
 	{
+		componentIn[0]->Update(componentIn);
+	}
+	
+	void Engine::RunUpdate(EngineContext& context) {
 		std::cout << "[Engine] update\n";
 
 		double elapsedTime = context.clock.ElapsedTime;
+
+		componentsThread.clear();
+		componentsThread.reserve(Factory::GetInstance()->components.size());
+
+		for (pair<string, vector<Component*>> components : Factory::GetInstance()->components)
+		{
+			vector<Component*> componentIn = components.second;
+			
+			if (componentIn.size() == 0)
+			{
+				continue;
+			}
+
+			function<void(vector<Component*>)> function = monCul;
+			componentsThread.push_back(thread(function, components.second));
+		}
+
+		if (context.Input().inputsPressed.size() > 0) {
+			cout << "Input pressed " << context.Input().inputsPressed.size() << " " << context.Input().inputsPressed[0] << endl;
+
+			context.Input().inputsPressed.clear();
+			Sleep(1000);
+		}
 
 		// tout lag est maximise 100 ms (1/10 de seconde)
 		// cela permet d'eviter de faire sauter le moteur en cas de breakpoint ou lag enorme
@@ -74,6 +101,12 @@ namespace ESGI {
 			elapsedTime = 0.10;
 
 		ProcessSystems(elapsedTime);
+	}
+
+	// ce n'est pas une fonction virtuelle !
+	thread Engine::Update(EngineContext& context)
+	{
+		return thread(&Engine::RunUpdate, this, context);
 	}
 
 }

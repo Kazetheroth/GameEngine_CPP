@@ -5,6 +5,9 @@
 #include <chrono>
 #include <vector>
 #include <functional>
+#include <thread>
+
+using namespace std;
 
 namespace ESGI
 {
@@ -35,8 +38,9 @@ namespace ESGI
 		bool Initialize() final;
 		void DeInitialize() final;
 
+		void RunUpdate();
 		// ce n'est pas une fonction virtuelle !
-		void Update();
+		thread Update();
 
 		void AddTimer(Timer& timer, std::function<void(void)> event)
 		{

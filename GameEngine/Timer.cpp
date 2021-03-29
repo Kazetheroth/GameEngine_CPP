@@ -21,9 +21,7 @@ namespace ESGI {
 		std::cout << "[Timer] deinitialized\n";
 	}
 
-	// ce n'est pas une fonction virtuelle !
-	void Clock::Update()
-	{
+	void Clock::RunUpdate() {
 		CurrentTimePoint = TimeSource::now();
 		TimeSinceStartup = std::chrono::duration<double>(CurrentTimePoint - TimePointAtStartup).count();
 
@@ -35,7 +33,7 @@ namespace ESGI {
 		{
 			Timer& timer = m_Timers[i].first;
 			timer.CurrentTime += ElapsedTime;
-			if (timer.CurrentTime >= timer.Delay) 
+			if (timer.CurrentTime >= timer.Delay)
 			{
 				// invoque notre fonction
 				m_Timers[i].second();
@@ -49,10 +47,16 @@ namespace ESGI {
 					i--;
 				}
 			}
-		
+
 			i++;
 		}
 
 		std::cout << "[Timer] update\n";
+	}
+
+	// ce n'est pas une fonction virtuelle !
+	thread Clock::Update()
+	{
+		return thread(&Clock::RunUpdate, this);
 	}
 }

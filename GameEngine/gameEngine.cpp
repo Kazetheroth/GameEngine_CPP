@@ -6,7 +6,6 @@
 // Appuyez sur Echap (ESC) pour quitter la boucle
 //
 
-
 #include "Utils.h"
 #include "Timer.h"
 #include "Input.h"
@@ -16,6 +15,9 @@
 #include <iostream>
 #include <vector>
 #include <thread>
+
+#include "PlayerBehavior.h"
+#include "Transform.h"
 
 namespace ESGI
 {
@@ -132,6 +134,15 @@ namespace ESGI
 
 			ESGI::Timer timer2{ 5.0, 0.0, true };
 			m_context.Clock().AddTimer(timer2, &RecurringTimeEvent);
+			
+			Factory::GetInstance()->RegisterComponentFunction(typeid(PlayerBehavior).name(), 
+				[](void) -> Component* { return new PlayerBehavior(); });
+
+			Factory::GetInstance()->RegisterComponentFunction(typeid(Component).name(),
+				[](void) -> Component* { return new Component(); });
+
+			Factory::GetInstance()->RegisterComponentFunction(typeid(Transform).name(),
+				[](void) -> Component* { return new Transform(); });
 
 			return allOk;
 		}
@@ -146,12 +157,15 @@ namespace ESGI
 		void Update()
 		{
 			// Ici le role et l'ordre de chaque classe est bien defini 
+			thread clockThread = m_context.Clock().Update();
+			
+			thread inputThread = m_context.Input().Update();
 
-			m_context.Clock().Update();
-			
-			m_context.Input().Update();
-			
-			m_context.Engine().Update(m_context);
+			thread engineThread = m_context.Engine().Update(m_context);
+
+			clockThread.join();
+			inputThread.join();
+			engineThread.join();
 		}
 
 		// main loop
@@ -186,7 +200,6 @@ namespace ESGI
 	};
 }
 
-
 int main(void)
 {
 	using namespace ESGI;
@@ -194,7 +207,6 @@ int main(void)
 	Application gameEngine;
 
 	gameEngine.Run();
-
 
 	return 0;
 }

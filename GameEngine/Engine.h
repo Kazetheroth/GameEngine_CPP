@@ -1,6 +1,8 @@
 #pragma once
 
 #include "InfraStructure.h"
+#include "Factory.h"
+#include <thread>
 
 namespace ESGI
 {
@@ -29,6 +31,7 @@ namespace ESGI
 		// simple exemple, ou alors un vector ou une liste simplement chainee (intrusive) de systems
 		EngineSystem* m_AIEngine;
 
+		vector<thread> componentsThread;
 
 		void ProcessSystems(double elapsedTime);
 
@@ -38,8 +41,10 @@ namespace ESGI
 
 		void DeInitialize() final;
 
+		void RunUpdate(EngineContext& context);
+
 		// ce n'est pas une fonction virtuelle !
-		void Update(EngineContext& context);
+		thread Update(EngineContext& context);
 
 	};
 }
