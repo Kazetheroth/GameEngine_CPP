@@ -61,7 +61,7 @@ namespace ESGI {
 		std::cout << "[Engine] deinitialized\n";
 	}
 
-	void monCul(vector<Component*> componentIn)
+	void UpdateLambda(vector<Component*> componentIn)
 	{
 		componentIn[0]->Update(componentIn);
 	}
@@ -83,7 +83,7 @@ namespace ESGI {
 				continue;
 			}
 
-			function<void(vector<Component*>)> function = monCul;
+			function<void(vector<Component*>)> function = UpdateLambda;
 			componentsThread.push_back(thread(function, components.second));
 		}
 
