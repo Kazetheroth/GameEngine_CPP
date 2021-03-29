@@ -179,6 +179,9 @@ namespace ESGI
 
 			m_needToQuit = !initOk;
 
+			string namePlayerBehaviorClass = typeid(PlayerBehavior).name();
+			shared_ptr<Component> newPlayer = Factory::GetInstance()->CreateComponent(namePlayerBehaviorClass);
+
 			while (!m_needToQuit)
 			{
 				std::cout << "[Application] frame # " << m_frameIndex << std::endl;

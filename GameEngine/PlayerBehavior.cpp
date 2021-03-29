@@ -1,15 +1,16 @@
 #include "PlayerBehavior.h"
 
 PlayerBehavior::PlayerBehavior() {
-	this->Init(typeid(PlayerBehavior).name());
+	string name = typeid(PlayerBehavior).name();
+	this->Init(name);
 }
 
-void PlayerBehavior::Update(vector<Component*> components)
+void PlayerBehavior::Update(vector<shared_ptr<Component>> components)
 {
-	for (Component* compo : components)
+	for (shared_ptr<Component> compo : components)
 	{
-		PlayerBehavior* pb = dynamic_cast<PlayerBehavior*>(compo);
+		shared_ptr<PlayerBehavior> pb = dynamic_pointer_cast<PlayerBehavior>(compo);
 
-		cout << pb->id << endl;
+		cout << ">>>> FROM PLAYERBEHAVIOR " << pb->id << endl;
 	}
 }

@@ -13,10 +13,13 @@ namespace ESGI
 			Factory();
 			static Factory* factoryInstance;
 
+		private:
+			shared_ptr<Component> InstantiateComponent(string type);
+
 		public:
 			static Factory* GetInstance();
 		
-			typedef map<string, vector<Component*>> ComponentMap;
+			typedef map<string, vector<shared_ptr<Component>>> ComponentMap;
 			ComponentMap components;
 
 			typedef map<string, vector<GameObject>> GameObjectMap;

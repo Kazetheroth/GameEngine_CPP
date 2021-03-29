@@ -13,7 +13,7 @@ namespace ESGI {
 			virtual void Init(string name);
 
 			virtual void Start() {}
-			virtual void Update(vector<Component*> components) {}
+			virtual void Update(vector<shared_ptr<Component>> components) {}
 			virtual void Destroy() {}
 
 			const string getName() const;

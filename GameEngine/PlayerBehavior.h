@@ -11,5 +11,5 @@ public:
 	int id = 1000;
 	PlayerBehavior();
 	
-	virtual void Update(vector<Component*> components);
+	virtual void Update(vector<shared_ptr<Component>> components);
 };

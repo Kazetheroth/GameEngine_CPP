@@ -22,33 +22,47 @@ namespace ESGI
 	{
 		factoryComponentRegistry[name] = classFunction;
 	}
-	
-	shared_ptr<Component> Factory::CreateComponent(string componentType)
+
+
+	shared_ptr<Component> Factory::InstantiateComponent(string type)
 	{
 		Component* compo = nullptr;
-		
-		auto it = factoryComponentRegistry.find(componentType);
+
+		auto it = factoryComponentRegistry.find(type);
 		if (it != factoryComponentRegistry.end())
 		{
 			compo = it->second();
-		} else
+		}
+		else
+		{
+			return nullptr;
+		}
+		
+		return shared_ptr<Component>(compo);
+	}
+	
+	shared_ptr<Component> Factory::CreateComponent(string componentType)
+	{
+		shared_ptr<Component> compo = InstantiateComponent(componentType);
+
+		if (compo == nullptr)
 		{
 			return nullptr;
 		}
 
 		if (components.count(componentType) == 0)
 		{
-			vector<Component*> componentsList;
+			vector<shared_ptr<Component>> componentsList;
 			componentsList.push_back(compo);
 
-			components.insert(pair<string, vector<Component*>>(componentType, componentsList));
+			components.insert(pair<string, vector<shared_ptr<Component>>>(componentType, componentsList));
 		}
 		else
 		{
-			vector<Component*> componentsList = components.at(componentType);
+			vector<shared_ptr<Component>> componentsList = components.at(componentType);
 			componentsList.push_back(compo);
 		}
 
-		return shared_ptr<Component>(compo);
+		return compo;
 	}
 }
