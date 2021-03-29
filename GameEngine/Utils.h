@@ -1,7 +1,15 @@
 #pragma once
 
+#include <iostream>
+using namespace std;
+
 namespace ESGI
 {
+	class Utils {
+	public:
+		static string GenRandomString(const int len);
+	};
+
 	// Pour les cas ou il nous faut faire des for-each en reverse
 	// specifiquement pour les vector ici
 	template <typename V>
