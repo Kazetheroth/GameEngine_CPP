@@ -12,11 +12,12 @@ namespace ESGI {
 	
 	class Component {
 		public:
+		
 			Component();
 			~Component() {}
 
 			virtual bool Deserialize(const rapidjson::Value& obj, GameObject* go);
-		
+			
 			virtual void Init(string name);
 
 			virtual void Start() {}
@@ -26,7 +27,7 @@ namespace ESGI {
 			const string getName() const;
 
 			void setGameObject(GameObject* gameObject);
-			const GameObject* getGameObject() const;
+			GameObject* getGameObject();
 			virtual void printComponent();
 
 		private:

@@ -7,6 +7,8 @@
 
 #include <Windows.h>
 
+#include "Pooler.h"
+
 namespace ESGI {
 
 	void Engine::ProcessSystems(double elapsedTime)
@@ -65,6 +67,21 @@ namespace ESGI {
 	{
 		componentIn[0]->Update(componentIn);
 	}
+
+	vector<Component*> GetActiveObject(vector<Component*> components)
+	{
+		vector<Component*> activeComponent;
+
+		for (Component* component : components)
+		{
+			if (component->getGameObject()->getIsActivate())
+			{
+				activeComponent.push_back(component);
+			}	
+		}
+
+		return activeComponent;
+	}
 	
 	void Engine::RunUpdate(EngineContext& context) {
 		std::cout << "[Engine] update\n";
@@ -76,7 +93,7 @@ namespace ESGI {
 
 		for (pair<string, vector<Component*>> components : Factory::GetInstance()->components)
 		{
-			vector<Component*> componentIn = components.second;
+			vector<Component*> componentIn = GetActiveObject(components.second);
 			
 			if (componentIn.empty())
 			{
@@ -84,7 +101,7 @@ namespace ESGI {
 			}
 
 			function<void(vector<Component*>)> function = UpdateLambda;
-			componentsThread.push_back(thread(function, components.second));
+			componentsThread.push_back(thread(function, componentIn));
 		}
 
 		for (int i = 0; i < componentsThread.size(); ++i)
@@ -95,6 +112,10 @@ namespace ESGI {
 		if (context.Input().inputsPressed.size() > 0) {
 			cout << "Input pressed " << context.Input().inputsPressed.size() << " " << context.Input().inputsPressed[0] << endl;
 
+			Player player = Player();
+			GameObject* newGo = Pooler::pools[player.archetypeTag]->GetPooledObject();
+			newGo->setIsActivate(true);
+			
 			context.Input().inputsPressed.clear();
 			Sleep(1000);
 		}

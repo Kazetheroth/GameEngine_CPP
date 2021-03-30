@@ -1,5 +1,7 @@
 #include "PlayerBehavior.h"
 
+#include "GameObject.h"
+
 PlayerBehavior::PlayerBehavior() {
 	string name = typeid(PlayerBehavior).name();
 	this->Init(name);
@@ -20,7 +22,7 @@ bool PlayerBehavior::Serialize(rapidjson::Writer<rapidjson::StringBuffer>* write
 void PlayerBehavior::Update(vector<Component*> components)
 {
 	for (Component* compo : components)
-	{
+	{	
 		PlayerBehavior* pb = dynamic_cast<PlayerBehavior*>(compo);
 
 		cout << ">>>> FROM PLAYERBEHAVIOR " << pb->id << endl;

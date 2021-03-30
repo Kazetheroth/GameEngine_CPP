@@ -16,8 +16,8 @@
 #include <vector>
 #include <thread>
 
-#include "Player.h"
 #include "PlayerBehavior.h"
+#include "Pooler.h"
 #include "Scene.h"
 #include "Transform.h"
 
@@ -151,6 +151,8 @@ namespace ESGI
 			Factory::GetInstance()->RegisterComponentFunction(typeid(Transform).name(),
 				[](void) -> Component* { return new Transform(); });
 
+			Pooler* pooler = new Pooler();
+			
 			return allOk;
 		}
 
@@ -188,6 +190,7 @@ namespace ESGI
 
 			Scene scene;
 			scene.DeserializeFromFile("Scene1.json");
+
 			for (GameObject* go : scene.GetGameObjects())
 			{
 				cout << "Name:" << go->getName() << endl;
@@ -196,7 +199,7 @@ namespace ESGI
 					co->printComponent();
 				}
 			}
-
+			
 			while (!m_needToQuit)
 			{
 				std::cout << "[Application] frame # " << m_frameIndex << std::endl;
@@ -223,11 +226,6 @@ int main(void)
 	using namespace ESGI;
 	
 	Application gameEngine;
-	
-	/*for (list<GameObject>::iterator itGameObjects = scene.GetGameObjects().GameObjectsList().begin(); itGameObjects != scene.GetGameObjects().GameObjectsList().end(); itGameObjects++)
-	{
-		printf("Name: %s, Active: %d", (*itGameObjects).getUid(), (*itGameObjects).getIsActivate());
-	}*/
 
 	gameEngine.Run();
 

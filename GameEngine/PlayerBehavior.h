@@ -8,6 +8,7 @@ class PlayerBehavior : public Component
 {
 private:
 public:
+
 	int id;
 	PlayerBehavior();
 	virtual bool Deserialize(const rapidjson::Value& obj, GameObject* go);

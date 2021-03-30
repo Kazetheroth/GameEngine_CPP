@@ -26,7 +26,7 @@ namespace ESGI {
 		this->gameObject = gameObject;
 	}
 
-	const GameObject* Component::getGameObject() const
+	GameObject* Component::getGameObject()
 	{
 		return gameObject;
 	}
