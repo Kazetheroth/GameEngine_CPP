@@ -12,4 +12,14 @@ namespace ESGI {
 	const string Component::getName() const {
 		return name;
 	}
+
+	void Component::setGameObject(GameObject* gameObject)
+	{
+		this->gameObject = gameObject;
+	}
+
+	const GameObject* Component::getGameObject() const
+	{
+		return gameObject;
+	}
 }

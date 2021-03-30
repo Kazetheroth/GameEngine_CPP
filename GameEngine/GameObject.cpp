@@ -31,13 +31,13 @@ namespace ESGI {
 		return isActivate;
 	}
 
-	vector<Component*> GameObject::getComponents() {
+	vector<shared_ptr<Component>> GameObject::getComponents() {
 		return components;
 	}
-	void GameObject::addComponent(Component* newComponent) {
+	void GameObject::addComponent(shared_ptr<Component> newComponent) {
 		bool findSameComponent = false;
 		
-		for (Component* component : components) {
+		for (shared_ptr<Component> component : components) {
 			if (component->getName()._Equal(newComponent->getName())) {
 				findSameComponent = true;
 				break;
@@ -49,10 +49,10 @@ namespace ESGI {
 		}
 	}
 
-	Component* GameObject::getComponent(string componentName) {
-		Component* componentSearched = nullptr;
+	shared_ptr<Component> GameObject::getComponent(string componentName) {
+		shared_ptr<Component> componentSearched = nullptr;
 
-		for (Component* component : components) {
+		for (shared_ptr<Component> component : components) {
 			if (component->getName()._Equal(componentName)) {
 				componentSearched = component;
 				break;

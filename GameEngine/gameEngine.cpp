@@ -16,8 +16,11 @@
 #include <vector>
 #include <thread>
 
+#include "Player.h"
 #include "PlayerBehavior.h"
 #include "Transform.h"
+
+using namespace GameObjectArchetype;
 
 namespace ESGI
 {
@@ -179,8 +182,8 @@ namespace ESGI
 
 			m_needToQuit = !initOk;
 
-			string namePlayerBehaviorClass = typeid(PlayerBehavior).name();
-			shared_ptr<Component> newPlayer = Factory::GetInstance()->CreateComponent(namePlayerBehaviorClass);
+			Player player = Player();
+			GameObject* go = Factory::GetInstance()->InstantiateArchetype(player);
 
 			while (!m_needToQuit)
 			{

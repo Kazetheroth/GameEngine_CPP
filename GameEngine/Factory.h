@@ -2,8 +2,11 @@
 #include <map>
 #include <functional>
 
+#include "Archetype.h"
 #include "Component.h"
 #include "GameObject.h"
+
+using namespace GameObjectArchetype;
 
 namespace ESGI
 {
@@ -22,12 +25,14 @@ namespace ESGI
 			typedef map<string, vector<shared_ptr<Component>>> ComponentMap;
 			ComponentMap components;
 
-			typedef map<string, vector<GameObject>> GameObjectMap;
+			typedef map<string, vector<GameObject*>> GameObjectMap;
 			GameObjectMap objects;
 
 			map<string, function<Component* (void)>> factoryComponentRegistry;
 
 			void RegisterComponentFunction(string name, function<Component* (void)> classFunction);
 			shared_ptr<Component> CreateComponent(string componentType);
+
+			GameObject* InstantiateArchetype(Archetype archetype);
 	};
 }

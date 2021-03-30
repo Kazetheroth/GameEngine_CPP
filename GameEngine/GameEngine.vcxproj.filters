@@ -48,9 +48,6 @@
     <ClCompile Include="Transform.cpp">
       <Filter>Component</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Object</Filter>
-    </ClCompile>
     <ClCompile Include="PlayerBehavior.cpp">
       <Filter>Component</Filter>
     </ClCompile>
@@ -97,6 +94,9 @@
     </ClInclude>
     <ClInclude Include="PlayerBehavior.h">
       <Filter>Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Archetype.h">
+      <Filter>Object</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

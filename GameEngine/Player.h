@@ -1,12 +1,20 @@
 #pragma once
-#include "GameObject.h"
+
+#include "Archetype.h"
+#include "PlayerBehavior.h"
 #include "Transform.h"
 
-using namespace ESGI;
-
-class Player : GameObject
+namespace GameObjectArchetype
 {
-public:
-private:
-	Transform transform;
-};
+	class Player : public Archetype
+	{
+		public:
+			Player()
+			{
+				archetypeTag = "Player";
+				components.reserve(2);
+				components.push_back(typeid(Transform).name());
+				components.push_back(typeid(PlayerBehavior).name());
+			}
+	};
+}

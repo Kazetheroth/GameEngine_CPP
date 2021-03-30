@@ -23,9 +23,9 @@ namespace ESGI {
 		void setIsActivate(bool isActivate);
 		bool getIsActivate();
 
-		vector<Component*> getComponents();
-		void addComponent(Component* component);
-		Component* getComponent(string componentName);
+		vector<shared_ptr<Component>> getComponents();
+		void addComponent(shared_ptr<Component> component);
+		shared_ptr<Component> getComponent(string componentName);
 
 		string serialize();
 
@@ -35,6 +35,6 @@ namespace ESGI {
 		string tag;
 		string name;
 		bool isActivate;
-		vector<Component*> components;
+		vector<shared_ptr<Component>> components;
 	};
 }
