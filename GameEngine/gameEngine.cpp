@@ -18,6 +18,7 @@
 
 #include "Player.h"
 #include "PlayerBehavior.h"
+#include "Scene.h"
 #include "Transform.h"
 
 using namespace GameObjectArchetype;
@@ -215,7 +216,14 @@ int main(void)
 	
 	Application gameEngine;
 
-	gameEngine.Run();
+	Scene scene;
+	scene.DeserializeFromFile("Scene1.json");
+
+	cout << "Name: " << scene.Name() << endl;
+	cout << "X: " << scene.Size().x << endl;
+	cout << "Y: " << scene.Size().y << endl;
+	cout << "Z: " << scene.Size().z << endl;
+	//gameEngine.Run();
 
 	return 0;
 }

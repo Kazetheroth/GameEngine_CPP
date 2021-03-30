@@ -22,6 +22,9 @@
     <Filter Include="Object">
       <UniqueIdentifier>{8e3ab302-c6ac-4b76-b969-b075b64fca17}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Data">
+      <UniqueIdentifier>{4d953dc6-a2d7-49ee-8a5f-15381ed3a7dc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -52,6 +55,12 @@
       <Filter>Component</Filter>
     </ClCompile>
     <ClCompile Include="Factory.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="JSONBase.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
@@ -98,5 +107,19 @@
     <ClInclude Include="Archetype.h">
       <Filter>Object</Filter>
     </ClInclude>
+    <ClInclude Include="JSONIncludes.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="JSONBase.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scene1.json">
+      <Filter>Data</Filter>
+    </None>
   </ItemGroup>
 </Project>

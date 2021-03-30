@@ -104,6 +104,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>./rapidjson;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -153,7 +154,9 @@
     <ClCompile Include="gameEngine.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Input.cpp" />
+    <ClCompile Include="JSONBase.cpp" />
     <ClCompile Include="PlayerBehavior.cpp" />
+    <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="Utils.cpp" />
@@ -165,14 +168,20 @@
     <ClInclude Include="EngineContext.h" />
     <ClInclude Include="Factory.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="JSONBase.h" />
+    <ClInclude Include="JSONIncludes.h" />
     <ClInclude Include="InfraStructure.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerBehavior.h" />
+    <ClInclude Include="Scene.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="Transform.h" />
     <ClInclude Include="Utils.h" />
     <ClInclude Include="Vector3.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scene1.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
