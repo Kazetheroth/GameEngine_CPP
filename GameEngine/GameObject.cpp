@@ -6,6 +6,14 @@ namespace ESGI {
 		uid = Utils::GenRandomString(36);
 	}
 
+	GameObject::~GameObject()
+	{
+		for (Component* component : components)
+		{
+			delete component;
+		}
+	}
+
 	string GameObject::getUid() {
 		return uid;
 	}
@@ -31,13 +39,13 @@ namespace ESGI {
 		return isActivate;
 	}
 
-	vector<shared_ptr<Component>> GameObject::getComponents() {
+	vector<Component*> GameObject::getComponents() {
 		return components;
 	}
-	void GameObject::addComponent(shared_ptr<Component> newComponent) {
+	void GameObject::addComponent(Component* newComponent) {
 		bool findSameComponent = false;
 		
-		for (shared_ptr<Component> component : components) {
+		for (Component* component : components) {
 			if (component->getName()._Equal(newComponent->getName())) {
 				findSameComponent = true;
 				break;
@@ -49,10 +57,10 @@ namespace ESGI {
 		}
 	}
 
-	shared_ptr<Component> GameObject::getComponent(string componentName) {
-		shared_ptr<Component> componentSearched = nullptr;
+	Component* GameObject::getComponent(string componentName) {
+		Component* componentSearched = nullptr;
 
-		for (shared_ptr<Component> component : components) {
+		for (Component* component : components) {
 			if (component->getName()._Equal(componentName)) {
 				componentSearched = component;
 				break;

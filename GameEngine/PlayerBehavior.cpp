@@ -5,11 +5,11 @@ PlayerBehavior::PlayerBehavior() {
 	this->Init(name);
 }
 
-void PlayerBehavior::Update(vector<shared_ptr<Component>> components)
+void PlayerBehavior::Update(vector<Component*> components)
 {
-	for (shared_ptr<Component> compo : components)
+	for (Component* compo : components)
 	{
-		shared_ptr<PlayerBehavior> pb = dynamic_pointer_cast<PlayerBehavior>(compo);
+		PlayerBehavior* pb = dynamic_cast<PlayerBehavior*>(compo);
 
 		cout << ">>>> FROM PLAYERBEHAVIOR " << pb->id << endl;
 	}

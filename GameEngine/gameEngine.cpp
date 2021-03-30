@@ -120,6 +120,9 @@ namespace ESGI
 
 			m_cores.clear();			// resize a zero element (mais la capacite ne change pas)
 			m_cores.shrink_to_fit();	// ajuste la capacity a la size du vector (libere la memoire)
+
+			Factory::GetInstance()->DestroyObjects();
+			delete Factory::GetInstance();
 		}
 
 		bool Initialize()

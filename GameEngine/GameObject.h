@@ -11,6 +11,7 @@ namespace ESGI {
 	class GameObject {
 	public:
 		GameObject();
+		~GameObject();
 
 		string getUid();
 
@@ -23,9 +24,9 @@ namespace ESGI {
 		void setIsActivate(bool isActivate);
 		bool getIsActivate();
 
-		vector<shared_ptr<Component>> getComponents();
-		void addComponent(shared_ptr<Component> component);
-		shared_ptr<Component> getComponent(string componentName);
+		vector<Component*> getComponents();
+		void addComponent(Component* component);
+		Component* getComponent(string componentName);
 
 		string serialize();
 
@@ -35,6 +36,6 @@ namespace ESGI {
 		string tag;
 		string name;
 		bool isActivate;
-		vector<shared_ptr<Component>> components;
+		vector<Component*> components;
 	};
 }

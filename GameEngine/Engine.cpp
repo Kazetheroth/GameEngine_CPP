@@ -61,7 +61,7 @@ namespace ESGI {
 		std::cout << "[Engine] deinitialized\n";
 	}
 
-	void UpdateLambda(vector<shared_ptr<Component>> componentIn)
+	void UpdateLambda(vector<Component*> componentIn)
 	{
 		componentIn[0]->Update(componentIn);
 	}
@@ -74,16 +74,16 @@ namespace ESGI {
 		componentsThread.clear();
 		componentsThread.reserve(Factory::GetInstance()->components.size());
 
-		for (pair<string, vector<shared_ptr<Component>>> components : Factory::GetInstance()->components)
+		for (pair<string, vector<Component*>> components : Factory::GetInstance()->components)
 		{
-			vector<shared_ptr<Component>> componentIn = components.second;
+			vector<Component*> componentIn = components.second;
 			
 			if (componentIn.empty())
 			{
 				continue;
 			}
 
-			function<void(vector<shared_ptr<Component>>)> function = UpdateLambda;
+			function<void(vector<Component*>)> function = UpdateLambda;
 			componentsThread.push_back(thread(function, components.second));
 		}
 

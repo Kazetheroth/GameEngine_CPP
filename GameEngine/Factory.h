@@ -17,12 +17,12 @@ namespace ESGI
 			static Factory* factoryInstance;
 
 		private:
-			shared_ptr<Component> InstantiateComponent(string type);
+			Component* InstantiateComponent(string type);
 
 		public:
 			static Factory* GetInstance();
 		
-			typedef map<string, vector<shared_ptr<Component>>> ComponentMap;
+			typedef map<string, vector<Component*>> ComponentMap;
 			ComponentMap components;
 
 			typedef map<string, vector<GameObject*>> GameObjectMap;
@@ -31,8 +31,10 @@ namespace ESGI
 			map<string, function<Component* (void)>> factoryComponentRegistry;
 
 			void RegisterComponentFunction(string name, function<Component* (void)> classFunction);
-			shared_ptr<Component> CreateComponent(string componentType);
+			Component* CreateComponent(string componentType);
 
 			GameObject* InstantiateArchetype(Archetype archetype);
+
+			void DestroyObjects();
 	};
 }

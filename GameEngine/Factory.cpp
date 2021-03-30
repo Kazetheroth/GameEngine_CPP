@@ -23,7 +23,7 @@ namespace ESGI
 		factoryComponentRegistry[name] = classFunction;
 	}
 
-	shared_ptr<Component> Factory::InstantiateComponent(string type)
+	Component* Factory::InstantiateComponent(string type)
 	{
 		Component* compo = nullptr;
 
@@ -37,12 +37,12 @@ namespace ESGI
 			return nullptr;
 		}
 		
-		return shared_ptr<Component>(compo);
+		return compo;
 	}
 	
-	shared_ptr<Component> Factory::CreateComponent(string componentType)
+	Component* Factory::CreateComponent(string componentType)
 	{
-		shared_ptr<Component> compo = InstantiateComponent(componentType);
+		Component* compo = InstantiateComponent(componentType);
 
 		if (compo == nullptr)
 		{
@@ -51,14 +51,14 @@ namespace ESGI
 
 		if (components.count(componentType) == 0)
 		{
-			vector<shared_ptr<Component>> componentsList;
+			vector<Component*> componentsList;
 			componentsList.push_back(compo);
 
-			components.insert(pair<string, vector<shared_ptr<Component>>>(componentType, componentsList));
+			components.insert(pair<string, vector<Component*>>(componentType, componentsList));
 		}
 		else
 		{
-			vector<shared_ptr<Component>> componentsList = components.at(componentType);
+			vector<Component*> componentsList = components.at(componentType);
 			componentsList.push_back(compo);
 			components[componentType] = componentsList;
 		}
@@ -75,7 +75,7 @@ namespace ESGI
 
 		for (string compoType : archetype.components)
 		{
-			shared_ptr<Component> newComponent = CreateComponent(compoType);
+			Component* newComponent = CreateComponent(compoType);
 			newComponent->setGameObject(gameObject);
 
 			gameObject->addComponent(newComponent);
@@ -96,5 +96,20 @@ namespace ESGI
 		}
 
 		return gameObject;
+	}
+
+	void Factory::DestroyObjects()
+	{
+		for (pair<string, vector<GameObject*>> objectsByTag : objects)
+		{
+			for (GameObject* gameObject : objectsByTag.second)
+			{
+				delete gameObject;
+			}
+		}
+
+		components.clear();
+		objects.clear();
+		factoryComponentRegistry.clear();
 	}
 }
