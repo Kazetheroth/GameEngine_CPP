@@ -228,7 +228,8 @@ int main(void)
 	{
 		printf("Name: %s, Active: %d", (*itGameObjects).getUid(), (*itGameObjects).getIsActivate());
 	}
-	//gameEngine.Run();
+
+	gameEngine.Run();
 
 	return 0;
 }
