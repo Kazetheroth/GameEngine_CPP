@@ -14,6 +14,22 @@ namespace ESGI {
 		}
 	}
 
+	bool GameObject::Deserialize(const rapidjson::Value& obj)
+	{
+		cout << "Debug Deserialize GameObject" << endl;
+		uid = obj["uid"].GetString();
+		setName(obj["name"].GetString());
+		setTag(obj["tag"].GetString());
+		setIsActivate(obj["isActive"].GetBool());
+		
+		return true;
+	}
+
+	bool GameObject::Serialize(rapidjson::Writer<rapidjson::StringBuffer>* writer) const
+	{
+		return false;
+	}
+
 	string GameObject::getUid() {
 		return uid;
 	}

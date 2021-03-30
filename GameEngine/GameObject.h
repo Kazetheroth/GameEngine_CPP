@@ -4,14 +4,18 @@
 #include <vector>
 
 #include "Component.h"
+#include "JSONBase.h"
 
 using namespace std;
 
 namespace ESGI {
-	class GameObject {
+	class GameObject : public JSONBase {
 	public:
 		GameObject();
 		~GameObject();
+
+		virtual bool Deserialize(const rapidjson::Value& obj);
+		virtual bool Serialize(rapidjson::Writer<rapidjson::StringBuffer>* writer) const;
 
 		string getUid();
 

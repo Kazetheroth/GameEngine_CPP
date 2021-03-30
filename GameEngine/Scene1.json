@@ -4,5 +4,67 @@
     "y": 4,
     "z": 0
   },
-  "name": "Zebi"
+  "name": "First_Scene",
+  "gameObjects": [
+    {
+      "uid": "AcC3V7KJNGrncqrTU6ssVXgcthEettmH5tYR",
+      "name": "Player1",
+      "isActive": true,
+      "tag": "Player",
+      "Component": [
+        {
+          "name": "class PlayerBehavior",
+          "id": 1000
+        },
+        {
+          "name": "class Transform",
+          "position": {
+            "x": 1,
+            "y": 1,
+            "z": 0
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 0
+          }
+        }
+      ]
+    },
+    {
+      "uid": "AcC3V7KJNGrncqrTU6ssVXgcthEettmH5tYV",
+      "name": "Player2",
+      "isActive": false,
+      "tag": "Player",
+      "Component": [
+        {
+          "name": "class PlayerBehavior",
+          "id": 1000
+        },
+        {
+          "name": "class Transform",
+          "position": {
+            "x": 1,
+            "y": 1,
+            "z": 0
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 0
+          }
+        }
+      ]
+    }
+  ]
 }

@@ -5,6 +5,17 @@ namespace ESGI {
 		this->Init(typeid(Component).name());
 	}
 
+	bool Component::Deserialize(const rapidjson::Value& obj)
+	{
+		Init(obj["name"].GetString());
+		return true;
+	}
+
+	bool Component::Serialize(rapidjson::Writer<rapidjson::StringBuffer>* writer) const
+	{
+		return false;
+	}
+
 	void Component::Init(string name) {
 		this->name = name;
 	}

@@ -223,6 +223,11 @@ int main(void)
 	cout << "X: " << scene.Size().x << endl;
 	cout << "Y: " << scene.Size().y << endl;
 	cout << "Z: " << scene.Size().z << endl;
+	
+	for (list<GameObject>::iterator itGameObjects = scene.GetGameObjects().GameObjectsList().begin(); itGameObjects != scene.GetGameObjects().GameObjectsList().end(); itGameObjects++)
+	{
+		printf("Name: %s, Active: %d", (*itGameObjects).getUid(), (*itGameObjects).getIsActivate());
+	}
 	//gameEngine.Run();
 
 	return 0;

@@ -13,6 +13,8 @@ private:
 public:
 	Transform();
 	Transform(Vector3 pos, Vector3 rot, Vector3 scale);
+	virtual bool Deserialize(const rapidjson::Value& obj);
+	virtual bool Serialize(rapidjson::Writer<rapidjson::StringBuffer>* writer) const;
 	
 	void setPosition(Vector3 position);
 	Vector3 getPosition() const;

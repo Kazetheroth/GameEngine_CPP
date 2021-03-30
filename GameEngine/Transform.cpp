@@ -18,6 +18,19 @@ Transform::Transform(Vector3 pos, Vector3 rot, Vector3 scale)
 	this->scale = scale;
 }
 
+bool Transform::Deserialize(const rapidjson::Value& obj)
+{
+	setPosition(Vector3(obj["position"]["x"].GetFloat(), obj["position"]["y"].GetFloat(), obj["position"]["z"].GetFloat()));
+	setRotation(Vector3(obj["rotation"]["x"].GetFloat(), obj["rotation"]["y"].GetFloat(), obj["rotation"]["z"].GetFloat()));
+	setScale(Vector3(obj["scale"]["x"].GetFloat(), obj["scale"]["y"].GetFloat(), obj["scale"]["z"].GetFloat()));
+	return true;
+}
+
+bool Transform::Serialize(rapidjson::Writer<rapidjson::StringBuffer>* writer) const
+{
+	return false;
+}
+
 void Transform::setPosition(Vector3 position) {
 	this->position = position;
 }

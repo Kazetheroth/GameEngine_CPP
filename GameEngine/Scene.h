@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include "GameObject.h"
+#include "GameObjects.h"
 #include "JSONBase.h"
 #include "Vector3.h"
 
@@ -23,9 +23,13 @@ namespace ESGI
 
 			const Vector3& Size() const { return size; }
 			void Size(const Vector3& size) { this->size = size; }
+
+			GameObjects& GetGameObjects() { return gameObjects; }
+			void SetGameObjects(GameObjects& gameObjects) { this->gameObjects = gameObjects; }
+	
 		private:
 			Vector3 size; // 4,4
 			string name;
-			//vector<GameObject*> gameObjects;
+			GameObjects gameObjects;
 	};
 }

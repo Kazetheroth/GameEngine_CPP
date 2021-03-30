@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <vector>
+#include "JSONBase.h"
 
 using namespace std;
 
@@ -14,6 +15,8 @@ namespace ESGI {
 			Component();
 			~Component() {}
 
+			virtual bool Deserialize(const rapidjson::Value& obj);
+			virtual bool Serialize(rapidjson::Writer<rapidjson::StringBuffer>* writer) const;
 			virtual void Init(string name);
 
 			virtual void Start() {}
