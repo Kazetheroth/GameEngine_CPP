@@ -34,6 +34,7 @@ namespace ESGI
 			Component* CreateComponent(string componentType);
 
 			GameObject* InstantiateArchetype(Archetype archetype);
+			GameObject* InstantiateEmpty();
 
 			void DestroyObjects();
 	};

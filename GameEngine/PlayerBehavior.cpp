@@ -5,10 +5,10 @@ PlayerBehavior::PlayerBehavior() {
 	this->Init(name);
 }
 
-bool PlayerBehavior::Deserialize(const rapidjson::Value& obj)
+bool PlayerBehavior::Deserialize(const rapidjson::Value& obj, GameObject* go)
 {
+	Component::Deserialize(obj, go);
 	id = obj["id"].GetInt();
-	Init(obj["name"].GetString());
 	return true;
 }
 
@@ -25,4 +25,9 @@ void PlayerBehavior::Update(vector<Component*> components)
 
 		cout << ">>>> FROM PLAYERBEHAVIOR " << pb->id << endl;
 	}
+}
+
+void PlayerBehavior::printComponent()
+{
+	cout << "Player Id: " << this->id << endl;
 }

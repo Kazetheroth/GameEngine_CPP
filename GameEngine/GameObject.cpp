@@ -1,4 +1,6 @@
 #include "GameObject.h"
+
+#include "Factory.h"
 #include "Utils.h"
 
 namespace ESGI {
@@ -14,20 +16,23 @@ namespace ESGI {
 		}
 	}
 
-	bool GameObject::Deserialize(const rapidjson::Value& obj)
+	GameObject* GameObject::Deserialize(const rapidjson::Value& obj, bool t)
 	{
 		cout << "Debug Deserialize GameObject" << endl;
-		uid = obj["uid"].GetString();
-		setName(obj["name"].GetString());
-		setTag(obj["tag"].GetString());
-		setIsActivate(obj["isActive"].GetBool());
-		
-		return true;
-	}
 
-	bool GameObject::Serialize(rapidjson::Writer<rapidjson::StringBuffer>* writer) const
-	{
-		return false;
+		GameObject* go = Factory::GetInstance()->InstantiateEmpty();
+		
+		go->setName(obj["name"].GetString());
+		go->setTag(obj["tag"].GetString());
+		go->setIsActivate(obj["isActive"].GetBool());
+		for (rapidjson::Value::ConstValueIterator itr = obj["components"].Begin(); itr != obj["components"].End(); ++itr)
+		{
+			Component* co = Factory::GetInstance()->CreateComponent((*itr)["name"].GetString());
+			co->Deserialize((*itr), go);
+			go->addComponent(co);
+		}
+		
+		return go;
 	}
 
 	string GameObject::getUid() {

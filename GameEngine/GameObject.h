@@ -9,13 +9,14 @@
 using namespace std;
 
 namespace ESGI {
-	class GameObject : public JSONBase {
+	class GameObject {
 	public:
 		GameObject();
 		~GameObject();
 
-		virtual bool Deserialize(const rapidjson::Value& obj);
-		virtual bool Serialize(rapidjson::Writer<rapidjson::StringBuffer>* writer) const;
+		//virtual bool Deserialize(const rapidjson::Value& obj);
+		static GameObject* Deserialize(const rapidjson::Value& obj, bool t);
+		//virtual bool Serialize(rapidjson::Writer<rapidjson::StringBuffer>* writer) const;
 
 		string getUid();
 

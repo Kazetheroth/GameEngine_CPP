@@ -186,8 +186,16 @@ namespace ESGI
 
 			m_needToQuit = !initOk;
 
-			Player player = Player();
-			GameObject* go = Factory::GetInstance()->InstantiateArchetype(player);
+			Scene scene;
+			scene.DeserializeFromFile("Scene1.json");
+			for (GameObject* go : scene.GetGameObjects())
+			{
+				cout << "Name:" << go->getName() << endl;
+				for (Component* co : go->getComponents())
+				{
+					co->printComponent();
+				}
+			}
 
 			while (!m_needToQuit)
 			{
@@ -215,19 +223,11 @@ int main(void)
 	using namespace ESGI;
 	
 	Application gameEngine;
-
-	Scene scene;
-	scene.DeserializeFromFile("Scene1.json");
-
-	cout << "Name: " << scene.Name() << endl;
-	cout << "X: " << scene.Size().x << endl;
-	cout << "Y: " << scene.Size().y << endl;
-	cout << "Z: " << scene.Size().z << endl;
 	
-	for (list<GameObject>::iterator itGameObjects = scene.GetGameObjects().GameObjectsList().begin(); itGameObjects != scene.GetGameObjects().GameObjectsList().end(); itGameObjects++)
+	/*for (list<GameObject>::iterator itGameObjects = scene.GetGameObjects().GameObjectsList().begin(); itGameObjects != scene.GetGameObjects().GameObjectsList().end(); itGameObjects++)
 	{
 		printf("Name: %s, Active: %d", (*itGameObjects).getUid(), (*itGameObjects).getIsActivate());
-	}
+	}*/
 
 	gameEngine.Run();
 

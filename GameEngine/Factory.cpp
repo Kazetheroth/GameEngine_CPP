@@ -98,6 +98,13 @@ namespace ESGI
 		return gameObject;
 	}
 
+	GameObject* Factory::InstantiateEmpty()
+	{
+		Archetype arch = Archetype();
+		
+		return InstantiateArchetype(arch);
+	}
+
 	void Factory::DestroyObjects()
 	{
 		for (pair<string, vector<GameObject*>> objectsByTag : objects)

@@ -15,8 +15,8 @@ namespace ESGI {
 			Component();
 			~Component() {}
 
-			virtual bool Deserialize(const rapidjson::Value& obj);
-			virtual bool Serialize(rapidjson::Writer<rapidjson::StringBuffer>* writer) const;
+			virtual bool Deserialize(const rapidjson::Value& obj, GameObject* go);
+		
 			virtual void Init(string name);
 
 			virtual void Start() {}
@@ -27,6 +27,7 @@ namespace ESGI {
 
 			void setGameObject(GameObject* gameObject);
 			const GameObject* getGameObject() const;
+			virtual void printComponent();
 
 		private:
 			string name;

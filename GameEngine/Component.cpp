@@ -1,19 +1,16 @@
 #include "Component.h"
 
+#include "Factory.h"
+
 namespace ESGI {
 	Component::Component() {
 		this->Init(typeid(Component).name());
 	}
 
-	bool Component::Deserialize(const rapidjson::Value& obj)
+	bool Component::Deserialize(const rapidjson::Value& obj, GameObject* go)
 	{
-		Init(obj["name"].GetString());
+		gameObject = go;
 		return true;
-	}
-
-	bool Component::Serialize(rapidjson::Writer<rapidjson::StringBuffer>* writer) const
-	{
-		return false;
 	}
 
 	void Component::Init(string name) {
@@ -32,5 +29,10 @@ namespace ESGI {
 	const GameObject* Component::getGameObject() const
 	{
 		return gameObject;
+	}
+
+	void Component::printComponent()
+	{
+		cout << "Component: " << this->name << endl;
 	}
 }

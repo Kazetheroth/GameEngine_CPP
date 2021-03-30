@@ -18,8 +18,9 @@ Transform::Transform(Vector3 pos, Vector3 rot, Vector3 scale)
 	this->scale = scale;
 }
 
-bool Transform::Deserialize(const rapidjson::Value& obj)
+bool Transform::Deserialize(const rapidjson::Value& obj, GameObject* go)
 {
+	Component::Deserialize(obj, go);
 	setPosition(Vector3(obj["position"]["x"].GetFloat(), obj["position"]["y"].GetFloat(), obj["position"]["z"].GetFloat()));
 	setRotation(Vector3(obj["rotation"]["x"].GetFloat(), obj["rotation"]["y"].GetFloat(), obj["rotation"]["z"].GetFloat()));
 	setScale(Vector3(obj["scale"]["x"].GetFloat(), obj["scale"]["y"].GetFloat(), obj["scale"]["z"].GetFloat()));
@@ -50,4 +51,11 @@ void Transform::setScale(Vector3 scale) {
 }
 Vector3 Transform::getScale() const {
 	return scale;
+}
+
+void Transform::printComponent()
+{
+	cout << "Transform : (" << this->position.x << ", " << this->position.y << ", " << this->position.z << ")" << endl;
+	cout << "Rotation : (" << this->rotation.x << ", " << this->rotation.y << ", " << this->rotation.z << ")" << endl;
+	cout << "Scale : (" << this->scale.x << ", " << this->scale.y << ", " << this->scale.z << ")" << endl;
 }
