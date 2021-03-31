@@ -113,7 +113,7 @@ namespace ESGI {
 			cout << "Input pressed " << context.Input().inputsPressed.size() << " " << context.Input().inputsPressed[0] << endl;
 
 			Player player = Player();
-			GameObject* newGo = Pooler::pools[player.archetypeTag]->GetPooledObject();
+			GameObject* newGo = Pooler::GetInstance()->pools[player.archetypeTag]->GetPooledObject();
 			newGo->setIsActivate(true);
 			
 			context.Input().inputsPressed.clear();
