@@ -23,13 +23,13 @@ void AsciiRenderer::Update(vector<Component*> components)
 {
 	for (Component* compo : components)
 	{
-		AsciiRenderer* pb = dynamic_cast<AsciiRenderer*>(compo);
+		AsciiRenderer* asciiRenderer = dynamic_cast<AsciiRenderer*>(compo);
 		Transform* transform = dynamic_cast<Transform*>(compo->getGameObject()->getComponent(Transform::rtti));
 
 		GameObject* g = compo->getGameObject();
 		Vector3 pos = transform->getPosition();
 
-		Scene::sceneAscii[pos.x][pos.y] = ascii;
+		Scene::sceneAscii[pos.x][pos.y] = asciiRenderer->ascii;
 	}
 }
 

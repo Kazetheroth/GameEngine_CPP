@@ -107,6 +107,8 @@ namespace ESGI {
 			componentsThread[i].join();
 		}
 
+		Input::inputsPressed.clear();
+
 		// tout lag est maximise 100 ms (1/10 de seconde)
 		// cela permet d'eviter de faire sauter le moteur en cas de breakpoint ou lag enorme
 		// alternativement on peut appliquer une correction en extrapolant a partir du temps ecoule 

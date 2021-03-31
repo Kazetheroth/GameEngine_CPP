@@ -20,6 +20,7 @@
 #include "Pooler.h"
 #include "Scene.h"
 #include "Transform.h"
+#include "SceneManager.h"
 
 using namespace GameObjectArchetype;
 
@@ -153,6 +154,9 @@ namespace ESGI
 
 			Factory::GetInstance()->RegisterComponentFunction(AsciiRenderer::rtti.type,
 				[](void) -> Component* { return new AsciiRenderer(); });
+
+			Factory::GetInstance()->RegisterComponentFunction(SceneManager::rtti.type,
+				[](void) -> Component* { return new SceneManager(); });
 
 			Pooler::InstantiatePooler();
 			

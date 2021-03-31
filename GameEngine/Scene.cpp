@@ -1,5 +1,5 @@
-#include "Scene.h"
 
+#include "Scene.h"
 
 namespace ESGI
 {

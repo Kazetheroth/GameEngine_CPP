@@ -1,6 +1,7 @@
 #include "RTTI.h"
 #include "Player.h"
 #include "AsciiRenderer.h"
+#include "SceneManager.h"
 
 #include "Factory.h"
 
@@ -21,3 +22,4 @@ RTTI_DEFINITION_BASE(Component);
 RTTI_DEFINITION(Transform, Component);
 RTTI_DEFINITION(PlayerBehavior, Component);
 RTTI_DEFINITION(AsciiRenderer, Component);
+RTTI_DEFINITION(SceneManager, Component);

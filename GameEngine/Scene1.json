@@ -1,7 +1,7 @@
 {
   "size": {
-    "x": 4,
-    "y": 4,
+    "x": 10,
+    "y": 10,
     "z": 0
   },
   "name": "First_Scene",
@@ -12,6 +12,9 @@
       "isActive": true,
       "tag": "PlayerZ",
       "components": [
+        {
+          "name": "SceneManager"
+        },
         {
           "name": "PlayerBehavior",
           "id": 1

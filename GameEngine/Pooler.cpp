@@ -1,5 +1,6 @@
 
 #include "Pooler.h"
+#include "SceneManager.h"
 
 namespace ESGI
 {
@@ -30,5 +31,6 @@ namespace ESGI
 		poolComponents[Transform::rtti.type] = new PoolComponent(Transform::rtti, 20);
 		poolComponents[PlayerBehavior::rtti.type] = new PoolComponent(PlayerBehavior::rtti, 20);
 		poolComponents[AsciiRenderer::rtti.type] = new PoolComponent(AsciiRenderer::rtti, 20);
+		poolComponents[SceneManager::rtti.type] = new PoolComponent(SceneManager::rtti, 5);
 	}
 }
