@@ -6,6 +6,7 @@
 #include <iostream>
 #include <vector>
 #include "JSONBase.h"
+#include "RTTI.h"
 
 using namespace std;
 
@@ -15,26 +16,25 @@ namespace ESGI {
 	
 	class Component {
 		public:
+
+			RTTI_DECLARATION;
 		
-			Component();
+			Component() {};
 			~Component() {}
 
 			virtual bool Deserialize(const rapidjson::Value& obj, GameObject* go);
 			
-			virtual void Init(string name);
+			virtual void Init() {};
 
 			virtual void Start() {}
 			virtual void Update(vector<Component*> components) {}
 			virtual void Destroy() {}
-
-			const string getName() const;
 
 			void setGameObject(GameObject* gameObject);
 			GameObject* getGameObject();
 			virtual void printComponent();
 
 		private:
-			string name;
 			GameObject* gameObject;
 	};
 }

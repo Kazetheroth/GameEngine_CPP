@@ -8,6 +8,7 @@ class PlayerBehavior : public Component
 {
 private:
 public:
+	RTTI_DECLARATION;
 
 	int id;
 	PlayerBehavior();

@@ -31,7 +31,7 @@ namespace ESGI {
 			co->Deserialize((*itr), go);
 			go->addComponent(co);
 		}
-		
+
 		return go;
 	}
 
@@ -67,7 +67,7 @@ namespace ESGI {
 		bool findSameComponent = false;
 		
 		for (Component* component : components) {
-			if (component->getName()._Equal(newComponent->getName())) {
+			if (component->rtti.IsA(newComponent->rtti)) {
 				findSameComponent = true;
 				break;
 			}
@@ -78,20 +78,16 @@ namespace ESGI {
 		}
 	}
 
-	Component* GameObject::getComponent(string componentName) {
+	Component* GameObject::getComponent(RTTI componentType) {
 		Component* componentSearched = nullptr;
 
 		for (Component* component : components) {
-			if (component->getName()._Equal(componentName)) {
+			if (component->rtti.IsA(componentType)) {
 				componentSearched = component;
 				break;
 			}
 		}
 
 		return componentSearched;
-	}
-
-	string serialize() {
-		return "";
 	}
 }

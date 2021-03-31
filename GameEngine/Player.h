@@ -13,10 +13,9 @@ namespace GameObjectArchetype
 
 			Player()
 			{
-				archetypeTag = "Player";
 				components.reserve(2);
-				components.push_back(typeid(Transform).name());
-				components.push_back(typeid(PlayerBehavior).name());
+				components.push_back(Transform::rtti.type);
+				components.push_back(PlayerBehavior::rtti.type);
 			}
 	};
 }

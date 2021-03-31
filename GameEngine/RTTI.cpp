@@ -11,3 +11,7 @@ RTTI::RTTI(const char* name, const RTTI& parent_type = RTTI::Default
 using namespace GameObjectArchetype;
 RTTI_DEFINITION_BASE(Archetype);
 RTTI_DEFINITION(Player, Archetype);
+
+RTTI_DEFINITION_BASE(Component);
+RTTI_DEFINITION(Transform, Component);
+RTTI_DEFINITION(PlayerBehavior, Component);

@@ -11,6 +11,8 @@ private:
 	Vector3 scale;
 
 public:
+	RTTI_DECLARATION;
+
 	Transform();
 	Transform(Vector3 pos, Vector3 rot, Vector3 scale);
 	virtual bool Deserialize(const rapidjson::Value& obj, GameObject* go);

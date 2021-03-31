@@ -142,13 +142,13 @@ namespace ESGI
 			ESGI::Timer timer2{ 5.0, 0.0, true };
 			m_context.Clock().AddTimer(timer2, &RecurringTimeEvent);
 			
-			Factory::GetInstance()->RegisterComponentFunction(typeid(PlayerBehavior).name(), 
+			Factory::GetInstance()->RegisterComponentFunction(PlayerBehavior::rtti.type, 
 				[](void) -> Component* { return new PlayerBehavior(); });
 
-			Factory::GetInstance()->RegisterComponentFunction(typeid(Component).name(),
+			Factory::GetInstance()->RegisterComponentFunction(Component::rtti.type,
 				[](void) -> Component* { return new Component(); });
 
-			Factory::GetInstance()->RegisterComponentFunction(typeid(Transform).name(),
+			Factory::GetInstance()->RegisterComponentFunction(Transform::rtti.type,
 				[](void) -> Component* { return new Transform(); });
 
 			Pooler::InstantiatePooler();
@@ -227,9 +227,7 @@ int main(void)
 	
 	Application gameEngine;
 
-	cout << Archetype::rtti.type << endl;
-	cout << Player::rtti.type << endl;
-	//gameEngine.Run();
+	gameEngine.Run();
 
 	return 0;
 }

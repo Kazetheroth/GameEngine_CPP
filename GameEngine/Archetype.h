@@ -16,7 +16,6 @@ namespace GameObjectArchetype
 	{
 		RTTI_DECLARATION;
 
-		string archetypeTag;
 		vector<string> components;
 	};
 }

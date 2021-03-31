@@ -70,7 +70,7 @@ namespace ESGI
 	{
 		GameObject* gameObject = new GameObject();
 		gameObject->setName("name");
-		gameObject->setTag(archetype.archetypeTag);
+		gameObject->setTag(archetype.rtti.type);
 		gameObject->setIsActivate(false);
 
 		for (string compoType : archetype.components)
@@ -81,18 +81,18 @@ namespace ESGI
 			gameObject->addComponent(newComponent);
 		}
 
-		if (objects.count(archetype.archetypeTag) == 0)
+		if (objects.count(archetype.rtti.type) == 0)
 		{
 			vector<GameObject*> gameObjects;
 			gameObjects.push_back(gameObject);
 
-			objects.insert(pair<string, vector<GameObject*>>(archetype.archetypeTag, gameObjects));
+			objects.insert(pair<string, vector<GameObject*>>(archetype.rtti.type, gameObjects));
 		}
 		else
 		{
-			vector<GameObject*> gameObjects = objects.at(archetype.archetypeTag);
+			vector<GameObject*> gameObjects = objects.at(archetype.rtti.type);
 			gameObjects.push_back(gameObject);
-			objects[archetype.archetypeTag] = gameObjects;
+			objects[archetype.rtti.type] = gameObjects;
 		}
 
 		return gameObject;

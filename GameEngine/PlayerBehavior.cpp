@@ -3,8 +3,6 @@
 #include "GameObject.h"
 
 PlayerBehavior::PlayerBehavior() {
-	string name = typeid(PlayerBehavior).name();
-	this->Init(name);
 }
 
 bool PlayerBehavior::Deserialize(const rapidjson::Value& obj, GameObject* go)

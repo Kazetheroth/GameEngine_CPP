@@ -2,8 +2,6 @@
 
 Transform::Transform()
 {
-	this->Init(typeid(Transform).name());
-
 	position = Vector3(0, 0, 0);
 	rotation = Vector3(0, 0, 0);
 	scale = Vector3(0, 0, 0);
@@ -11,8 +9,6 @@ Transform::Transform()
 
 Transform::Transform(Vector3 pos, Vector3 rot, Vector3 scale)
 {
-	this->Init(typeid(Transform).name());
-
 	position = pos;
 	rotation = rot;
 	this->scale = scale;

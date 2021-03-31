@@ -13,11 +13,11 @@
       "tag": "Player",
       "components": [
         {
-          "name": "class PlayerBehavior",
+          "name": "PlayerBehavior",
           "id": 1
         },
         {
-          "name": "class Transform",
+          "name": "Transform",
           "position": {
             "x": 1,
             "y": 1,
@@ -43,11 +43,11 @@
       "tag": "Player",
       "components": [
         {
-          "name": "class PlayerBehavior",
+          "name": "PlayerBehavior",
           "id": 2
         },
         {
-          "name": "class Transform",
+          "name": "Transform",
           "position": {
             "x": 1,
             "y": 1,

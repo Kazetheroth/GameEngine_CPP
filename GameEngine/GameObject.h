@@ -34,9 +34,7 @@ namespace ESGI {
 
 		vector<Component*> getComponents();
 		void addComponent(Component* component);
-		Component* getComponent(string componentName);
-
-		string serialize();
+		Component* getComponent(RTTI componentType);
 
 	private:
 		string uid;
