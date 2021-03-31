@@ -22,9 +22,12 @@ namespace ESGI
 	Pooler::Pooler()
 	{
 		Player player = Player();
-		pools[Player::rtti.type] = new Pool(player, 10);
+		poolObjects[Player::rtti.type] = new Pool(player, 10);
 
 		Archetype arche = Archetype();
-		pools[Archetype::rtti.type] = new Pool(arche, 50);
+		poolObjects[Archetype::rtti.type] = new Pool(arche, 50);
+
+		poolComponents[Transform::rtti.type] = new PoolComponent(Transform::rtti, 20);
+		poolComponents[PlayerBehavior::rtti.type] = new PoolComponent(PlayerBehavior::rtti, 20);
 	}
 }

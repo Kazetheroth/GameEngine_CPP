@@ -2,6 +2,7 @@
 
 #include "Factory.h"
 #include "Utils.h"
+#include "Pooler.h"
 
 namespace ESGI {
 	GameObject::GameObject() {
@@ -20,14 +21,14 @@ namespace ESGI {
 	{
 		cout << "Debug Deserialize GameObject" << endl;
 
-		GameObject* go = Factory::GetInstance()->InstantiateEmpty();
-		
+		GameObject* go = Pooler::GetInstance()->poolObjects[Archetype::rtti.type]->GetPooledObject();
+
 		go->setName(obj["name"].GetString());
 		go->setTag(obj["tag"].GetString());
 		go->setIsActivate(obj["isActive"].GetBool());
 		for (rapidjson::Value::ConstValueIterator itr = obj["components"].Begin(); itr != obj["components"].End(); ++itr)
 		{
-			Component* co = Factory::GetInstance()->CreateComponent((*itr)["name"].GetString());
+			Component* co = Pooler::GetInstance()->poolComponents[(*itr)["name"].GetString()]->GetPooledObject();
 			co->Deserialize((*itr), go);
 			go->addComponent(co);
 		}

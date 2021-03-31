@@ -17,7 +17,11 @@ namespace ESGI
 
 		return factoryInstance;
 	}
-
+	/*
+	void Factory::RegisterRTTI(const RTTI& rtti) {
+		StringToRTTI[rtti.type] = rtti;
+	}
+	*/
 	void Factory::RegisterComponentFunction(string name, function<Component*(void)> classFunction)
 	{
 		factoryComponentRegistry[name] = classFunction;

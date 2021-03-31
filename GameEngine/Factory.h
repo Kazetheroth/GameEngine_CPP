@@ -29,6 +29,9 @@ namespace ESGI
 			GameObjectMap objects;
 
 			map<string, function<Component* (void)>> factoryComponentRegistry;
+			static map<string, const RTTI*> StringToRTTI;
+
+			static void RegisterRTTI(const RTTI& rtti) {};
 
 			void RegisterComponentFunction(string name, function<Component* (void)> classFunction);
 			Component* CreateComponent(string componentType);

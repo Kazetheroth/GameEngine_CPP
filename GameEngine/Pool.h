@@ -10,12 +10,22 @@ class Pool
 {
 private:
 	vector<GameObject*> objects;
-	Archetype archetype;
-	int nbObjectInstantiate;
 
 public:
 	Pool() {};
 	Pool(Archetype archetype, int nbInstantiate);
 
 	GameObject* GetPooledObject();
+};
+
+class PoolComponent
+{
+private:
+	vector<Component*> components;
+
+public:
+	PoolComponent() {};
+	PoolComponent(RTTI rtti, int nbInstantiate);
+
+	Component* GetPooledObject();
 };

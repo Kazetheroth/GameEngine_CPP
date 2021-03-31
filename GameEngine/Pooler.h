@@ -15,7 +15,7 @@ namespace ESGI
 		static Pooler* GetInstance();
 		static void InstantiatePooler();
 
-		typedef map<string, Pool*> PoolMap;
-		PoolMap pools;
+		map<string, Pool*> poolObjects;
+		map<string, PoolComponent*> poolComponents;
 	};
 }

@@ -2,9 +2,6 @@
 
 Pool::Pool(Archetype archetype, int nbInstantiate)
 {
-	this->archetype = archetype;
-	this->nbObjectInstantiate = nbInstantiate;
-
 	objects.reserve(nbInstantiate);
 	
 	for (int i = 0; i < nbInstantiate; ++i)
@@ -21,6 +18,30 @@ GameObject* Pool::GetPooledObject()
 		if (!go->getIsActivate())
 		{
 			return go;
+		}
+	}
+
+	return nullptr;
+}
+
+
+PoolComponent::PoolComponent(RTTI rtti, int nbInstantiate)
+{
+	components.reserve(nbInstantiate);
+
+	for (int i = 0; i < nbInstantiate; ++i)
+	{
+		components.push_back(Factory::GetInstance()->CreateComponent(rtti.type));
+	}
+}
+
+Component* PoolComponent::GetPooledObject()
+{
+	for (Component* co : components)
+	{
+		if (co->getGameObject() == nullptr)
+		{
+			return co;
 		}
 	}
 

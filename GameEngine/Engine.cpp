@@ -74,7 +74,7 @@ namespace ESGI {
 
 		for (Component* component : components)
 		{
-			if (component->getGameObject()->getIsActivate())
+			if (component->getGameObject() != nullptr && component->getGameObject()->getIsActivate())
 			{
 				activeComponent.push_back(component);
 			}	
@@ -113,7 +113,7 @@ namespace ESGI {
 			cout << "Input pressed " << context.Input().inputsPressed.size() << " " << context.Input().inputsPressed[0] << endl;
 
 			Player player = Player();
-			GameObject* newGo = Pooler::GetInstance()->pools[Player::rtti.type]->GetPooledObject();
+			GameObject* newGo = Pooler::GetInstance()->poolObjects[Player::rtti.type]->GetPooledObject();
 			newGo->setIsActivate(true);
 			
 			context.Input().inputsPressed.clear();
