@@ -10,7 +10,7 @@
       "uid": "AcC3V7KJNGrncqrTU6ssVXgcthEettmH5tYR",
       "name": "Player1",
       "isActive": true,
-      "tag": "Player",
+      "tag": "PlayerZ",
       "components": [
         {
           "name": "PlayerBehavior",

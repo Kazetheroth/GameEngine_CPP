@@ -36,6 +36,19 @@ namespace ESGI {
 		return go;
 	}
 
+	GameObject* GameObject::FindFirstByTag(string tag)
+	{
+		cout << "Debug FindPlayer" << endl;
+		for (GameObject* go : Pooler::GetInstance()->poolObjects[Archetype::rtti.type]->GetObjects())
+		{
+			if (go->getTag() == tag)
+			{
+				return go;
+			}
+		}
+		return nullptr;
+	}
+
 	string GameObject::getUid() {
 		return uid;
 	}

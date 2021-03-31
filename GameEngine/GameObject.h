@@ -20,6 +20,7 @@ namespace ESGI {
 		//virtual bool Deserialize(const rapidjson::Value& obj);
 		static GameObject* Deserialize(const rapidjson::Value& obj, bool t);
 		//virtual bool Serialize(rapidjson::Writer<rapidjson::StringBuffer>* writer) const;
+		static GameObject* FindFirstByTag(string tag);
 
 		string getUid();
 

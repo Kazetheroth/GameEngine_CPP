@@ -16,6 +16,7 @@ public:
 	Pool(Archetype archetype, int nbInstantiate);
 
 	GameObject* GetPooledObject();
+	vector<GameObject*> GetObjects();
 };
 
 class PoolComponent

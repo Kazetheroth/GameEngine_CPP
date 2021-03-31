@@ -205,7 +205,6 @@ namespace ESGI
 				std::cout << "[Application] frame # " << m_frameIndex << std::endl;
 				
 				Update();
-				
 				// emule un delai de traitement (une synchro verticale par ex.)
 				std::this_thread::sleep_for(std::chrono::milliseconds(10));
 

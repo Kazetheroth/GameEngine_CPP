@@ -119,6 +119,10 @@ namespace ESGI {
 			context.Input().inputsPressed.clear();
 			Sleep(1000);
 		}
+		if (GameObject::FindFirstByTag("PlayerZ") != nullptr)
+		{
+			cout << "Player By Tag 'PlayerZ' :" << GameObject::FindFirstByTag("PlayerZ")->getName() << endl;
+		}
 
 		// tout lag est maximise 100 ms (1/10 de seconde)
 		// cela permet d'eviter de faire sauter le moteur en cas de breakpoint ou lag enorme

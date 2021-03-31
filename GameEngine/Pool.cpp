@@ -24,6 +24,11 @@ GameObject* Pool::GetPooledObject()
 	return nullptr;
 }
 
+vector<GameObject*> Pool::GetObjects()
+{
+	return objects;
+}
+
 
 PoolComponent::PoolComponent(RTTI rtti, int nbInstantiate)
 {
