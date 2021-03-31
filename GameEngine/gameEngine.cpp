@@ -227,7 +227,9 @@ int main(void)
 	
 	Application gameEngine;
 
-	gameEngine.Run();
+	cout << Archetype::rtti.type << endl;
+	cout << Player::rtti.type << endl;
+	//gameEngine.Run();
 
 	return 0;
 }

@@ -9,6 +9,8 @@ namespace GameObjectArchetype
 	class Player : public Archetype
 	{
 		public:
+			RTTI_DECLARATION;
+
 			Player()
 			{
 				archetypeTag = "Player";

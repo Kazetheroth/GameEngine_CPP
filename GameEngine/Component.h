@@ -1,5 +1,8 @@
 #pragma once
 
+#ifndef INCLUDE_COMPONENT
+#define INCLUDE_COMPONENT
+
 #include <iostream>
 #include <vector>
 #include "JSONBase.h"
@@ -35,3 +38,5 @@ namespace ESGI {
 			GameObject* gameObject;
 	};
 }
+
+#endif

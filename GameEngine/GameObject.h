@@ -1,5 +1,8 @@
 #pragma once
 
+#ifndef INCLUDE_GAMEOBJECT
+#define INCLUDE_GAMEOBJECT
+
 #include <string>
 #include <vector>
 
@@ -44,3 +47,5 @@ namespace ESGI {
 		vector<Component*> components;
 	};
 }
+
+#endif
