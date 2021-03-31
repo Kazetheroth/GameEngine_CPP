@@ -7,10 +7,15 @@ namespace ESGI
 {
 	class Pooler
 	{
-	public:
+	private:
 		Pooler();
+		static Pooler* instance;
+
+	public:
+		static Pooler* GetInstance();
+		static void InstantiatePooler();
 
 		typedef map<string, Pool*> PoolMap;
-		static PoolMap pools;
+		PoolMap pools;
 	};
 }

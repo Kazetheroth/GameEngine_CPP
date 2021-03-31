@@ -151,7 +151,7 @@ namespace ESGI
 			Factory::GetInstance()->RegisterComponentFunction(typeid(Transform).name(),
 				[](void) -> Component* { return new Transform(); });
 
-			Pooler* pooler = new Pooler();
+			Pooler::InstantiatePooler();
 			
 			return allOk;
 		}

@@ -3,7 +3,21 @@
 
 namespace ESGI
 {
-	Pooler::PoolMap Pooler::pools = { };
+	Pooler* Pooler::instance = nullptr;
+
+	void Pooler::InstantiatePooler() {
+		if (instance == nullptr) {
+			instance = new Pooler();
+		}
+	}
+
+	Pooler* Pooler::GetInstance() {
+		if (instance == nullptr) {
+			instance = new Pooler();
+		}
+
+		return instance;
+	}
 
 	Pooler::Pooler()
 	{
