@@ -50,8 +50,6 @@ namespace ESGI {
 
 			i++;
 		}
-
-		std::cout << "[Timer] update\n";
 	}
 
 	// ce n'est pas une fonction virtuelle !

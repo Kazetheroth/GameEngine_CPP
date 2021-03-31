@@ -30,6 +30,8 @@ namespace ESGI {
 			virtual void Update(vector<Component*> components) {}
 			virtual void Destroy() {}
 
+			virtual RTTI& GetRTTI();
+
 			void setGameObject(GameObject* gameObject);
 			GameObject* getGameObject();
 			virtual void printComponent();

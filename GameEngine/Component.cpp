@@ -23,4 +23,8 @@ namespace ESGI {
 	{
 		cout << "Component: " << rtti.type << endl;
 	}
+
+	RTTI& Component::GetRTTI() {
+		return Component::rtti;
+	}
 }

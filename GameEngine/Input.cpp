@@ -8,6 +8,8 @@
 
 namespace ESGI {
 
+	vector<int> Input::inputsPressed = {};
+
 	bool Input::Initialize() 
 	{
 #if defined(_DEBUG)
@@ -25,7 +27,6 @@ namespace ESGI {
 	void Input::RunUpdate()
 	{
 		GetInputs();
-		std::cout << "[Input] update\n";
 	}
 
 	// ce n'est pas une fonction virtuelle !

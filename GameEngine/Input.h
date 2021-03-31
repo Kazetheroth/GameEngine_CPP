@@ -10,7 +10,7 @@ namespace ESGI
 {
 	struct Input : public InfraStructure
 	{
-		vector<int> inputsPressed;
+		static vector<int> inputsPressed;
 
 		bool QuitButtonPressed = false;
 

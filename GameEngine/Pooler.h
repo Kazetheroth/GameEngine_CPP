@@ -2,6 +2,7 @@
 
 #include "Pool.h"
 #include "Player.h"
+#include "AsciiRenderer.h"
 
 namespace ESGI
 {

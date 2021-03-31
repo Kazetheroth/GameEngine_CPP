@@ -17,10 +17,14 @@
           "id": 1
         },
         {
+          "name": "AsciiRenderer",
+          "ascii": "o"
+        },
+        {
           "name": "Transform",
           "position": {
             "x": 1,
-            "y": 1,
+            "y": 2,
             "z": 0
           },
           "rotation": {
@@ -32,36 +36,6 @@
             "x": 2,
             "y": 2,
             "z": 2
-          }
-        }
-      ]
-    },
-    {
-      "uid": "AcC3V7KJNGrncqrTU6sVXiucthEettmH5tYR",
-      "name": "Player2",
-      "isActive": true,
-      "tag": "Player",
-      "components": [
-        {
-          "name": "PlayerBehavior",
-          "id": 2
-        },
-        {
-          "name": "Transform",
-          "position": {
-            "x": 1,
-            "y": 1,
-            "z": 0
-          },
-          "rotation": {
-            "x": 0,
-            "y": 0,
-            "z": 0
-          },
-          "scale": {
-            "x": 1,
-            "y": 1,
-            "z": 1
           }
         }
       ]

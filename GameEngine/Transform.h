@@ -27,4 +27,6 @@ public:
 	void setScale(Vector3 scale);
 	Vector3 getScale() const;
 	virtual void printComponent();
+
+	virtual RTTI& GetRTTI();
 };

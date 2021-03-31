@@ -84,13 +84,11 @@ namespace ESGI {
 	}
 	
 	void Engine::RunUpdate(EngineContext& context) {
-		std::cout << "[Engine] update\n";
-
 		double elapsedTime = context.clock.ElapsedTime;
 
 		componentsThread.clear();
 		componentsThread.reserve(Factory::GetInstance()->components.size());
-
+	
 		for (pair<string, vector<Component*>> components : Factory::GetInstance()->components)
 		{
 			vector<Component*> componentIn = GetActiveObject(components.second);
@@ -107,21 +105,6 @@ namespace ESGI {
 		for (int i = 0; i < componentsThread.size(); ++i)
 		{
 			componentsThread[i].join();
-		}
-
-		if (context.Input().inputsPressed.size() > 0) {
-			cout << "Input pressed " << context.Input().inputsPressed.size() << " " << context.Input().inputsPressed[0] << endl;
-
-			Player player = Player();
-			GameObject* newGo = Pooler::GetInstance()->poolObjects[Player::rtti.type]->GetPooledObject();
-			newGo->setIsActivate(true);
-			
-			context.Input().inputsPressed.clear();
-			Sleep(1000);
-		}
-		if (GameObject::FindFirstByTag("PlayerZ") != nullptr)
-		{
-			cout << "Player By Tag 'PlayerZ' :" << GameObject::FindFirstByTag("PlayerZ")->getName() << endl;
 		}
 
 		// tout lag est maximise 100 ms (1/10 de seconde)

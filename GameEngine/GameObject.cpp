@@ -77,25 +77,14 @@ namespace ESGI {
 		return components;
 	}
 	void GameObject::addComponent(Component* newComponent) {
-		bool findSameComponent = false;
-		
-		for (Component* component : components) {
-			if (component->rtti.IsA(newComponent->rtti)) {
-				findSameComponent = true;
-				break;
-			}
-		}
-
-		if (!findSameComponent) {
-			components.push_back(newComponent);
-		}
+		components.push_back(newComponent);
 	}
 
 	Component* GameObject::getComponent(RTTI componentType) {
 		Component* componentSearched = nullptr;
 
 		for (Component* component : components) {
-			if (component->rtti.IsA(componentType)) {
+			if (component->GetRTTI().IsExactlyA(componentType)) {
 				componentSearched = component;
 				break;
 			}

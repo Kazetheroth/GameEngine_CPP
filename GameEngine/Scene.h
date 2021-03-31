@@ -16,6 +16,9 @@ namespace ESGI
 	class Scene : public JSONBase
 	{
 		public:
+			static vector<vector<char>> sceneAscii;
+			static Vector3 size;
+
 			Scene();
 			virtual ~Scene();
 			virtual bool Deserialize(const rapidjson::Value& obj);
@@ -29,9 +32,11 @@ namespace ESGI
 			void Size(const Vector3& size) { this->size = size; }
 
 			vector<GameObject*> GetGameObjects() { return gameObjects; }
+
+			void DisplayScene();
+			void ClearScene();
 	
 		private:
-			Vector3 size; // 4,4
 			string name;
 			vector<GameObject*> gameObjects;
 	};

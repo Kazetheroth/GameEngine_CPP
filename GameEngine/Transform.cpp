@@ -55,3 +55,7 @@ void Transform::printComponent()
 	cout << "Rotation : (" << this->rotation.x << ", " << this->rotation.y << ", " << this->rotation.z << ")" << endl;
 	cout << "Scale : (" << this->scale.x << ", " << this->scale.y << ", " << this->scale.z << ")" << endl;
 }
+
+RTTI& Transform::GetRTTI() {
+	return Transform::rtti;
+}

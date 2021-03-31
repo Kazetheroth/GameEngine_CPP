@@ -151,6 +151,9 @@ namespace ESGI
 			Factory::GetInstance()->RegisterComponentFunction(Transform::rtti.type,
 				[](void) -> Component* { return new Transform(); });
 
+			Factory::GetInstance()->RegisterComponentFunction(AsciiRenderer::rtti.type,
+				[](void) -> Component* { return new AsciiRenderer(); });
+
 			Pooler::InstantiatePooler();
 			
 			return allOk;
@@ -177,6 +180,20 @@ namespace ESGI
 			engineThread.join();
 		}
 
+		vector<Component*> GetActiveObject(vector<Component*> components)
+		{
+			vector<Component*> activeComponent;
+
+			for (Component* component : components)
+			{
+				if (component->getGameObject() != nullptr && component->getGameObject()->getIsActivate())
+				{
+					activeComponent.push_back(component);
+				}
+			}
+
+			return activeComponent;
+		}
 		// main loop
 		void Run()
 		{
@@ -191,20 +208,16 @@ namespace ESGI
 			Scene scene;
 			scene.DeserializeFromFile("Scene1.json");
 
-			for (GameObject* go : scene.GetGameObjects())
-			{
-				cout << "Name:" << go->getName() << endl;
-				for (Component* co : go->getComponents())
-				{
-					co->printComponent();
-				}
-			}
-			
 			while (!m_needToQuit)
 			{
 				std::cout << "[Application] frame # " << m_frameIndex << std::endl;
 				
+				scene.ClearScene();
+
 				Update();
+
+				scene.DisplayScene();
+				
 				// emule un delai de traitement (une synchro verticale par ex.)
 				std::this_thread::sleep_for(std::chrono::milliseconds(10));
 
